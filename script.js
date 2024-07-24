@@ -1,26 +1,34 @@
-fetch('config.json')
-    .then(response => response.json())
-    .then(data => {
-        document.title = data.title;
-        document.getElementById('header-title').textContent = data.header;
-        document.getElementById('header-subtitle').textContent = data.subheader;
-        
-        const content = document.getElementById('content');
-        data.sections.forEach(section => {
-            const sectionElement = document.createElement('section');
-            sectionElement.classList.add('glass');
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('config.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('portfolio');
+            data.sections.sort((a, b) => a.order - b.order);
             
-            const sectionTitle = document.createElement('h2');
-            sectionTitle.textContent = section.title;
-            sectionElement.appendChild(sectionTitle);
-            
-            const sectionContent = document.createElement('p');
-            sectionContent.textContent = section.content;
-            sectionElement.appendChild(sectionContent);
-            
-            content.appendChild(sectionElement);
-        });
+            data.sections.forEach(section => {
+                const sectionElement = document.createElement('section');
+                
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = section.title;
+                sectionElement.appendChild(titleElement);
+                
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = section.description;
+                sectionElement.appendChild(descriptionElement);
+                
+                fetch(`${section.folder}/config.json`)
+                    .then(response => response.json())
+                    .then(imagesData => {
+                        imagesData.images.forEach(image => {
+                            const imgElement = document.createElement('img');
+                            imgElement.src = `${section.folder}/${image.file}`;
+                            imgElement.alt = image.name;
+                            sectionElement.appendChild(imgElement);
+                        });
+                    });
 
-        document.getElementById('footer-text').textContent = data.footer;
-    })
-    .catch(error => console.error('Error fetching config:', error));
+                container.appendChild(sectionElement);
+            });
+        })
+        .catch(error => console.error('Error loading config:', error));
+});
