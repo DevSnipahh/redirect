@@ -1,20 +1,46 @@
 {
-  "title": "My Glass Themed Website",
-  "header": "Welcome to My Glass Themed Website",
-  "subheader": "A modern and sleek design",
   "sections": [
     {
-      "title": "Section 1",
-      "content": "This is the content of section 1. It looks amazing!"
+      "title": "Profile Pictures",
+      "description": "A collection of custom profile pictures.",
+      "order": 1,
+      "folder": "profile_pictures"
     },
     {
-      "title": "Section 2",
-      "content": "This is the content of section 2. The glass effect is stunning."
+      "title": "YouTube Thumbnails",
+      "description": "Creative thumbnails for YouTube videos.",
+      "order": 2,
+      "folder": "youtube_thumbnails"
     },
     {
-      "title": "Section 3",
-      "content": "This is the content of section 3. Enjoy the view!"
+      "title": "Banners",
+      "description": "Custom banners for various platforms.",
+      "order": 3,
+      "folder": "banners"
+    },
+    {
+      "title": "Game Thumbnails",
+      "description": "Thumbnails for various games.",
+      "order": 4,
+      "folder": "game_thumbnails"
+    },
+    {
+      "title": "Scene Thumbnails",
+      "description": "Thumbnails depicting various scenes.",
+      "order": 5,
+      "folder": "scene_thumbnails"
+    },
+    {
+      "title": "Game Icons",
+      "description": "Icons for different games.",
+      "order": 6,
+      "folder": "game_icons"
+    },
+    {
+      "title": "Gamepass Icons",
+      "description": "Icons for game passes.",
+      "order": 7,
+      "folder": "gamepass_icons"
     }
-  ],
-  "footer": "© 2024 My Glass Themed Website"
+  ]
 }
