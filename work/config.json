@@ -5,7 +5,7 @@
       "description": "A collection of custom profile pictures.",
       "order": 1,
       "images": [
-        { "url": "https://example.com/profile1.png", "name": "Profile 1" },
+        { "url": "https://www.google.com/search?q=image&client=opera-gx&sca_esv=00cbfd697922c9db&sca_upv=1&sxsrf=ADLYWILFbio4jLbDlAEw-amkxfVc58q1zw:1721915358174&udm=2&source=iu&ictx=1&vet=1&fir=B_ypq20yGKrazM%252C6dhDHhJGcmvL6M%252C%252Fm%252F0jg24%253BD2e1clQQJsbJwM%252C-t22bY2ix3gHaM%252C_%253BsKMM4eBjWSQEBM%252CB51x0PBR9KNzvM%252C_%253BASMDFNsL7Vw1YM%252CbKJ3gdlWTtaNoM%252C_%253BPG4lSDrYNAQW-M%252CVO9pYSXq-QvgbM%252C_%253B0kl2WrGN8BrkhM%252CKEFtss0dYCDpzM%252C_&usg=AI4_-kRDwWd7KI20rb95_iLKbpsYBT02_A&sa=X&ved=2ahUKEwigjIfKqsKHAxUf3AIHHYN3B0IQ_B16BAg9EAE#vhid=B_ypq20yGKrazM&vssid=mosaic", "name": "Profile 1" },
         { "url": "https://example.com/profile2.png", "name": "Profile 2" },
         { "url": "https://example.com/profile3.jpg", "name": "Profile 3" }
       ]
