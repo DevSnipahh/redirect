@@ -1,0 +1,34 @@
+{
+  "sections": [
+    {
+      "title": "Profile Pictures",
+      "description": "A collection of custom profile pictures.",
+      "order": 1,
+      "images": [
+        { "url": "https://example.com/profile1.png", "name": "Profile 1" },
+        { "url": "https://example.com/profile2.png", "name": "Profile 2" },
+        { "url": "https://example.com/profile3.jpg", "name": "Profile 3" }
+      ]
+    },
+    {
+      "title": "YouTube Thumbnails",
+      "description": "Creative thumbnails for YouTube videos.",
+      "order": 2,
+      "images": [
+        { "url": "https://example.com/thumbnail1.png", "name": "Thumbnail 1" },
+        { "url": "https://example.com/thumbnail2.png", "name": "Thumbnail 2" },
+        { "url": "https://example.com/thumbnail3.jpg", "name": "Thumbnail 3" }
+      ]
+    },
+    {
+      "title": "Banners",
+      "description": "Custom banners for various platforms.",
+      "order": 3,
+      "images": [
+        { "url": "https://example.com/banner1.png", "name": "Banner 1" },
+        { "url": "https://example.com/banner2.png", "name": "Banner 2" },
+        { "url": "https://example.com/banner3.jpg", "name": "Banner 3" }
+      ]
+    }
+  ]
+}
