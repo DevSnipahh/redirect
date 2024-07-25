@@ -1,0 +1,5 @@
+[
+  { "url": "https://via.placeholder.com/300x300.png?text=Profile+1", "name": "Profile 1", "order": 1 },
+  { "url": "https://via.placeholder.com/300x300.png?text=Profile+2", "name": "Profile 2", "order": 2 },
+  { "url": "https://via.placeholder.com/300x300.png?text=Profile+3", "name": "Profile 3", "order": 3 }
+]
