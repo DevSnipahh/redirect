@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('config.json')
+    fetch('work/config.json')
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('portfolio');
@@ -16,16 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 descriptionElement.textContent = section.description;
                 sectionElement.appendChild(descriptionElement);
                 
-                fetch(`${section.folder}/config.json`)
-                    .then(response => response.json())
-                    .then(imagesData => {
-                        imagesData.images.forEach(image => {
-                            const imgElement = document.createElement('img');
-                            imgElement.src = `${section.folder}/${image.file}`;
-                            imgElement.alt = image.name;
-                            sectionElement.appendChild(imgElement);
-                        });
-                    });
+                section.images.forEach(image => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = image.url;
+                    imgElement.alt = image.name;
+                    sectionElement.appendChild(imgElement);
+                });
 
                 container.appendChild(sectionElement);
             });
