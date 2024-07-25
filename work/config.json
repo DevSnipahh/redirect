@@ -25,7 +25,7 @@
       "description": "Custom Scenes.",
       "order": 3,
       "images": [
-        { "url": "https://i.imgur.com/gemdxCy.png", "name": "Scene 1" },
+        { "url": "https://i.imgur.com/gemdxCy.png", "name": "Scene 1" }
       ]
     }
   ]
