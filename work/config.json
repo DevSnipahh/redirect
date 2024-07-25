@@ -4,29 +4,19 @@
       "title": "Profile Pictures",
       "description": "A collection of custom profile pictures.",
       "order": 1,
-      "images": [
-        { "url": "e", "name": "Profile 1" },
-        { "url": "https://example.com/profile2.png", "name": "Profile 2" },
-        { "url": "https://example.com/profile3.jpg", "name": "Profile 3" }
-      ]
+      "file": "profile_pictures.json"
     },
     {
       "title": "YouTube Thumbnails",
       "description": "Creative thumbnails for YouTube videos.",
       "order": 2,
-      "images": [
-        { "url": "https://example.com/thumbnail1.png", "name": "Thumbnail 1" },
-        { "url": "https://example.com/thumbnail2.png", "name": "Thumbnail 2" },
-        { "url": "https://example.com/thumbnail3.jpg", "name": "Thumbnail 3" }
-      ]
+      "file": "youtube_thumbnails.json"
     },
     {
       "title": "Scenes",
-      "description": "Custom Scenes.",
+      "description": "Custom scenes for various platforms.",
       "order": 3,
-      "images": [
-        { "url": "https://i.imgur.com/gemdxCy.png", "name": "Scene 1" }
-      ]
+      "file": "scenes.json"
     }
   ]
 }
