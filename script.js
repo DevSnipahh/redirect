@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchDiscordMessages() {
     // Replace with your channel ID
-    const channelId = 'YOUR_CHANNEL_ID';
+    const channelId = '1253006792116404314';
     // Replace with your Google Apps Script Web App URL
-    const googleScriptUrl = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL';
+    const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbxA1jJxodKp5ZGN3kK8RxS68pnVlgY8bCDKFHjSt4PZUw-l56FCTY0VJFqnJpYSNCMJSQ/exec';
     
     try {
         const response = await fetch(`${googleScriptUrl}?channelId=${channelId}`);
