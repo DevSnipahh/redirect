@@ -2,7 +2,7 @@ const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 
 let particlesArray = [];
-const numberOfParticles = 50; // Reduced the number of particles
+const numberOfParticles = 500; 
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
