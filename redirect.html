@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth2 Redirect</title>
+    <script>
+        // Function to parse URL parameters
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            queryString.split("&").forEach(function (item) {
+                const [key, value] = item.split("=");
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Handle the OAuth2 response
+        function handleOAuthResponse() {
+            const params = getQueryParams();
+            const accessToken = params['access_token'];
+            const error = params['error'];
+            const errorDescription = params['error_description'];
+
+            if (error) {
+                document.body.innerHTML = `<h1>Error: ${error}</h1><p>${errorDescription || ''}</p>`;
+                return;
+            }
+
+            if (accessToken) {
+                // Display the access token
+                document.body.innerHTML = `<h1>Access Token Received:</h1><p>${accessToken}</p>`;
+                // Optionally, send this token to your server or use it directly
+            } else {
+                document.body.innerHTML = `<h1>No access token received</h1>`;
+                console.log('URL Parameters:', params);
+            }
+        }
+
+        // Run the handler when the page loads
+        window.onload = handleOAuthResponse;
+    </script>
+</head>
+<body>
+    <h1>Processing...</h1>
+</body>
+</html>
