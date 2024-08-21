@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevSnipahh's Portfolio</title>
-    <meta content="DevSnipahh's Portfolio" property="og:title" />
-    <meta content="Hey, have you ever wanted to check out my graphic art? Well, now's your chance! My website is finally up and running, and I'd love for you to visit and see my work. I've put a lot of effort into creating a diverse collection of pieces, and I'm excited to share them with you. You can even place orders directly through the site. So, go ahead and explore my site to discover all the amazing artwork I've been working on, and feel free to order your favorites!" property="og:description" />
-    <meta content="https://embed.com/this-is-the-site-url" property="og:url" />
-    <meta content="https://embed.com/embedimage.png" property="og:image" />
-    <meta content="#ff00a6" name="theme-color" />
-    <link rel="stylesheet" href="styles.css">
+    <title>OAuth2 Redirect</title>
+    <script>
+        // Function to parse URL parameters
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substr(1).split("&").forEach(function (item) {
+                const [key, value] = item.split("=");
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Handle the OAuth2 response
+        function handleOAuthResponse() {
+            const params = getQueryParams();
+            const accessToken = params['access_token'];
+            const error = params['error'];
+
+            if (error) {
+                document.body.innerHTML = `<h1>Error: ${error}</h1>`;
+                return;
+            }
+
+            if (accessToken) {
+                // Do something with the access token
+                document.body.innerHTML = `<h1>Access Token: ${accessToken}</h1>`;
+                // Optionally, send this token to your server or use it directly
+            } else {
+                document.body.innerHTML = `<h1>No access token received</h1>`;
+            }
+        }
+
+        // Run the handler when the page loads
+        window.onload = handleOAuthResponse;
+    </script>
 </head>
 <body>
-    <canvas id="particles-canvas"></canvas>
-    <div class="container" id="portfolio"></div>
-    <script src="particles.js"></script>
-    <script src="script.js"></script>
+    <h1>Processing...</h1>
 </body>
 </html>
