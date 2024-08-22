@@ -13,7 +13,7 @@
             margin: 0;
             background: #111;
             color: #fff;
-            font-family: Arial, sans-serif;
+            font-family: 'Verdana', sans-serif; /* Cozy font */
             overflow: hidden;
         }
 
@@ -24,13 +24,16 @@
             background: #222;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
             animation: fadeIn 1s ease-in-out;
+            position: relative; /* Position relative for proper overlay handling */
+            z-index: 1; /* Ensure container is on top */
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 20px;
             color: #ff00ff; /* Neon pink */
             animation: fadeIn 2s ease-in-out;
+            font-family: 'Arial', sans-serif; /* Cozy and clean font */
         }
 
         p {
@@ -49,12 +52,18 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            z-index: 0; /* Ensure loading is below the container */
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
         }
 
         .loading span {
             font-size: 1.5em;
             color: #ff00ff; /* Neon pink */
             animation: neon 1.5s infinite alternate;
+            font-family: 'Arial', sans-serif; /* Cozy font */
         }
 
         @keyframes fadeIn {
@@ -79,13 +88,12 @@
     </style>
 </head>
 <body>
+    <div class="loading" id="loading">
+        <span>Loading...</span>
+    </div>
     <div class="container">
         <h1>OAuth2 Redirect Handler</h1>
         <p id="auth-code">Processing...</p>
-    </div>
-
-    <div class="loading" id="loading">
-        <span>Loading...</span>
     </div>
 
     <script>
