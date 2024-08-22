@@ -5,44 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OAuth2 Redirect</title>
     <script>
-        // Function to parse URL hash parameters
-        function getHashParams() {
-            const params = {};
-            const hashString = window.location.hash.substring(1); // Use hash part for access tokens
-            hashString.split("&").forEach(function (item) {
-                const [key, value] = item.split("=");
-                params[key] = decodeURIComponent(value);
-            });
-            return params;
-        }
-
-        // Handle the OAuth2 response
-        function handleOAuthResponse() {
-            const params = getHashParams();
-            const accessToken = params['access_token'];
-            const error = params['error'];
-            const errorDescription = params['error_description'];
-
-            if (error) {
-                document.body.innerHTML = `<h1>Error: ${error}</h1><p>${errorDescription || ''}</p>`;
-                console.log('Error:', error, errorDescription);
-                return;
+        document.addEventListener('DOMContentLoaded', function() {
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
             }
 
-            if (accessToken) {
-                document.body.innerHTML = `<h1>Access Token Received:</h1><p>${accessToken}</p>`;
-                console.log('Access Token:', accessToken);
+            const authCode = getQueryParam('code');
+            if (authCode) {
+                // Redirect to Google Apps Script endpoint
+                const scriptUrl = 'https://script.google.com/macros/s/your-deployment-id/exec';
+                window.location.href = `${scriptUrl}?code=${authCode}`;
             } else {
-                document.body.innerHTML = `<h1>No access token received</h1>`;
-                console.log('Hash Parameters:', params);
+                document.getElementById('auth-code').textContent = 'No authorization code found.';
             }
-        }
-
-        // Run the handler when the page loads
-        window.onload = handleOAuthResponse;
+        });
     </script>
 </head>
 <body>
-    <h1>Processing...</h1>
+    <h1>OAuth2 Redirect Handler</h1>
+    <p id="auth-code">Processing...</p>
 </body>
 </html>
