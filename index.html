@@ -13,7 +13,7 @@
             margin: 0;
             background: #111;
             color: #fff;
-            font-family: 'Verdana', sans-serif; /* Cozy font */
+            font-family: 'Verdana', sans-serif;
             overflow: hidden;
         }
 
@@ -24,16 +24,16 @@
             background: #222;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
             animation: fadeIn 1s ease-in-out;
-            position: relative; /* Position relative for proper overlay handling */
-            z-index: 1; /* Ensure container is on top */
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #ff00ff; /* Neon pink */
+            color: #ff00ff;
             animation: fadeIn 2s ease-in-out;
-            font-family: 'Arial', sans-serif; /* Cozy and clean font */
+            font-family: 'Arial', sans-serif;
         }
 
         p {
@@ -52,8 +52,8 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            z-index: 0; /* Ensure loading is below the container */
-            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+            z-index: 0;
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             padding: 20px;
             color: #fff;
@@ -61,9 +61,9 @@
 
         .loading span {
             font-size: 1.5em;
-            color: #ff00ff; /* Neon pink */
+            color: #ff00ff;
             animation: neon 1.5s infinite alternate;
-            font-family: 'Arial', sans-serif; /* Cozy font */
+            font-family: 'Arial', sans-serif;
         }
 
         @keyframes fadeIn {
@@ -111,12 +111,20 @@
 
             const authCode = getQueryParam('code');
             if (authCode) {
-                // Wait for 2 seconds before redirecting
-                setTimeout(() => {
-                    // Redirect to Google Apps Script endpoint
-                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzN7kevOnePx_KyRmAldW5bl4QqMM0Fu-HZ7dcr3lUY_LhJzfufjbnKraWRwZU0xHHQ/exec';
-                    window.location.href = `${scriptUrl}?code=${authCode}`;
-                }, 2000); // 2000 milliseconds = 2 seconds
+                // Make a request to Google Apps Script
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbzN7kevOnePx_KyRmAldW5bl4QqMM0Fu-HZ7dcr3lUY_LhJzfufjbnKraWRwZU0xHHQ/exec';
+                fetch(`${scriptUrl}?code=${authCode}`)
+                    .then(response => {
+                        // Assuming the API call was successful, redirect to your other site
+                        const redirectUrl = 'https://www.yoursite.com';
+                        window.location.href = redirectUrl;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        authCodeElement.textContent = 'Failed to process authorization code.';
+                        // Hide loading animation
+                        loadingElement.style.display = 'none';
+                    });
             } else {
                 authCodeElement.textContent = 'No authorization code found.';
                 // Hide loading animation
