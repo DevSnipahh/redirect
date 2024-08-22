@@ -14,7 +14,7 @@
             const authCode = getQueryParam('code');
             if (authCode) {
                 // Redirect to Google Apps Script endpoint
-                const scriptUrl = 'https://script.google.com/macros/s/your-deployment-id/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyJ4hG5rHl-SVDKICudkPYHLVN10BPyCk314R4eC9bv9kD-cCofTw_ygbCjRrNaTLNZ/exec';
                 window.location.href = `${scriptUrl}?code=${authCode}`;
             } else {
                 document.getElementById('auth-code').textContent = 'No authorization code found.';
