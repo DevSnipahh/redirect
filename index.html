@@ -103,9 +103,12 @@
 
             const authCode = getQueryParam('code');
             if (authCode) {
-                // Redirect to Google Apps Script endpoint
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyJ4hG5rHl-SVDKICudkPYHLVN10BPyCk314R4eC9bv9kD-cCofTw_ygbCjRrNaTLNZ/exec';
-                window.location.href = `${scriptUrl}?code=${authCode}`;
+                // Wait for 5 seconds before redirecting
+                setTimeout(() => {
+                    // Redirect to Google Apps Script endpoint
+                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzN7kevOnePx_KyRmAldW5bl4QqMM0Fu-HZ7dcr3lUY_LhJzfufjbnKraWRwZU0xHHQ/exec';
+                    window.location.href = `${scriptUrl}?code=${authCode}`;
+                }, 5000); // 5000 milliseconds = 5 seconds
             } else {
                 authCodeElement.textContent = 'No authorization code found.';
                 // Hide loading animation
