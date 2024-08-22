@@ -113,9 +113,9 @@
             if (authCode) {
                 // Make a request to Google Apps Script
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbzN7kevOnePx_KyRmAldW5bl4QqMM0Fu-HZ7dcr3lUY_LhJzfufjbnKraWRwZU0xHHQ/exec';
-                fetch(`${scriptUrl}?code=${authCode}`)
-                    .then(response => {
-                        // Assuming the API call was successful, redirect to your other site
+                fetch(`${scriptUrl}?code=${authCode}`, { mode: 'no-cors' })
+                    .then(() => {
+                        // Redirect to another site after the request is made
                         const redirectUrl = 'https://www.yoursite.com';
                         window.location.href = redirectUrl;
                     })
