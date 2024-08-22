@@ -4,8 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OAuth2 Redirect</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            border-radius: 15px;
+            padding: 30px;
+            background: #222;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ff00ff; /* Neon pink */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: #e0e0e0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loading span {
+            font-size: 1.5em;
+            color: #ff00ff; /* Neon pink */
+            animation: neon 1.5s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+            }
+            to {
+                text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OAuth2 Redirect Handler</h1>
+        <p id="auth-code">Processing...</p>
+    </div>
+
+    <div class="loading" id="loading">
+        <span>Loading...</span>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const loadingElement = document.getElementById('loading');
+            const authCodeElement = document.getElementById('auth-code');
+
+            // Show loading animation
+            loadingElement.style.display = 'flex';
+
             function getQueryParam(param) {
                 const urlParams = new URLSearchParams(window.location.search);
                 return urlParams.get(param);
@@ -17,13 +107,11 @@
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbyJ4hG5rHl-SVDKICudkPYHLVN10BPyCk314R4eC9bv9kD-cCofTw_ygbCjRrNaTLNZ/exec';
                 window.location.href = `${scriptUrl}?code=${authCode}`;
             } else {
-                document.getElementById('auth-code').textContent = 'No authorization code found.';
+                authCodeElement.textContent = 'No authorization code found.';
+                // Hide loading animation
+                loadingElement.style.display = 'none';
             }
         });
     </script>
-</head>
-<body>
-    <h1>OAuth2 Redirect Handler</h1>
-    <p id="auth-code">Processing...</p>
 </body>
 </html>
