@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OAuth2 Redirect</title>
     <script>
-        // Function to parse URL parameters
-        function getQueryParams() {
+        // Function to parse URL hash parameters
+        function getHashParams() {
             const params = {};
-            window.location.search.substr(1).split("&").forEach(function (item) {
+            const hashString = window.location.hash.substring(1); // Use hash part for access tokens
+            hashString.split("&").forEach(function (item) {
                 const [key, value] = item.split("=");
                 params[key] = decodeURIComponent(value);
             });
@@ -17,21 +18,23 @@
 
         // Handle the OAuth2 response
         function handleOAuthResponse() {
-            const params = getQueryParams();
+            const params = getHashParams();
             const accessToken = params['access_token'];
             const error = params['error'];
+            const errorDescription = params['error_description'];
 
             if (error) {
-                document.body.innerHTML = `<h1>Error: ${error}</h1>`;
+                document.body.innerHTML = `<h1>Error: ${error}</h1><p>${errorDescription || ''}</p>`;
+                console.log('Error:', error, errorDescription);
                 return;
             }
 
             if (accessToken) {
-                // Do something with the access token
-                document.body.innerHTML = `<h1>Access Token: ${accessToken}</h1>`;
-                // Optionally, send this token to your server or use it directly
+                document.body.innerHTML = `<h1>Access Token Received:</h1><p>${accessToken}</p>`;
+                console.log('Access Token:', accessToken);
             } else {
                 document.body.innerHTML = `<h1>No access token received</h1>`;
+                console.log('Hash Parameters:', params);
             }
         }
 
@@ -43,4 +46,3 @@
     <h1>Processing...</h1>
 </body>
 </html>
-
